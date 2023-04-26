@@ -107,7 +107,6 @@ evaluatev0('./checkpoints/BiSeSTDC/model_maxmIOU75.pth', dspth='./data', backbon
 
 
 * Start the evaluation process:
-
 ```bash
 CUDA_VISIBLE_DEVICES=0 python evaluation.py
 ```
