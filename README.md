@@ -1,23 +1,24 @@
 
- BiSeSTDC Network for Real-Time  Small Object Semantic Segmentation
+DA-STDC Network for Real-Time  Small Object Semantic Segmentation
 
 ## Overview
 
 <p align="center">
-  <img src="image/BiSeSTDC architecture.png" alt="overview-of-our-method" width="600"/></br>
+  <img src="image/DA-STDC architecture.png" alt="overview-of-our-method" width="600"/></br>
   <span align="center">Speed-Accuracy performance comparison on the Cityscapes test set</span> 
 </p>
-We present BiSeSTDC-Seg, an mannully designed semantic segmentation network with not only state-of-the-art performance but also faster speed than current methods.
+
+We present DASTDC-Seg, an mannully designed semantic segmentation network with not only state-of-the-art performance but also faster speed than current methods.
 
 Highlights:
 
-* **BiSeSTDC Net**: a novel and efficient network named BiSeSTDC(Bilateral Segmentation ShortTerm Dense Concatenate) to improve the performance of small object real-time semantic segmentation.
+* **DASTDC Net**: a novel and efficient network named DASTDC(Bilateral Segmentation ShortTerm Dense Concatenate) to improve the performance of small object real-time semantic segmentation.
 * **Small Object Sensitive**: Effectiveness of Small-Object Sensitive improvement.
-* **SOTA**: BiSeSTDC achieves extremely fast speed  and maintains competitive accuracy.
+* **SOTA**: DASTDC achieves extremely fast speed  and maintains competitive accuracy.
 
 
 <p align="center">
-<img src="images/comparison-cityscapes.png" alt="Cityscapes" width="400"/></br>
+<img src="images/DA-STDC compare.png" alt="Cityscapes" width="400"/></br>
 </p>
 
 ## Methods
@@ -29,7 +30,7 @@ Highlights:
 - Python 3.5.6
 - NVIDIA GPU
 - TensorRT v5.1.5.0 (Only need for testing inference speed)
-BIiSeSTDCNePre
+BiSeSTDCNePre
 This repository has been trained on Tesla V100. Configurations (e.g batch size, image patch size) may need to be changed on different platforms. Also, for fair competition, we test the inference speed on NVIDIA GTX 1080Ti.
 
 ## Installation
@@ -37,8 +38,8 @@ This repository has been trained on Tesla V100. Configurations (e.g batch size, 
 * Clone this repo:
 
 ```bash
-git clone https://github.com/bearking79/BiSeSTDC
-cd BiSeSTDC
+git clone https://github.com/yhj02284296/DA-STDCNet.git
+cd DA-STDCNet
 ```
 
 * Install dependencies:
@@ -62,11 +63,11 @@ pip install -r requirements.txt
   ln -s /path_to_data/leftImg8bit data/leftImg8bit
   ```
 
-### 1. Train BiSeSTDC-Seg
+### 1. Train DA-STDC
 
-Note: Backbone BiSeSTDC denotes BiSeSTDC, STDCNet813 denotes STDC1, STDCNet1446 denotes STDC2.
+Note: Backbone DA-STDC denotes DA-STDC, STDCNet813 denotes STDC1, STDCNet1446 denotes STDC2.
 
-* Train BiSeSTDC:
+* Train DA-STDC:
 
 ```bashBIiSeSTDCNePre
 export CUDA_VISIBLE_DEVICES=0,1,2
@@ -91,16 +92,16 @@ ImageNet Pretrained STDCNet Weights for training and Cityscapes trained STDC-Seg
 
 ### 2. Evaluation
 
-Here we use our pretrained BiSeSTDCSeg as an example for the evaluation.
+Here we use our pretrained DA-STDC as an example for the evaluation.
 
 * Choose the evaluation model in evaluation.py:
 
 ```python
-#BiSeSTDC-Seg50 mIoU 0.746
+#DA-STDC1-50 mIoU 0.746
 evaluatev0('./checkpoints/BiSeSTDC/model_maxmIOU50.pth', dspth='./data', backbone='BiSeSTDC', scale=0.5, 
            use_boundary_2=False, use_boundary_4=False, use_boundary_8=True, use_boundary_16=False)
 
-#STDC1-Seg75 mIoU 0.776
+#DA-STDC1-75 mIoU 0.776
 evaluatev0('./checkpoints/BiSeSTDC/model_maxmIOU75.pth', dspth='./data', backbone='BiSeSTDC', scale=0.75, 
            use_boundary_2=False, use_boundary_4=False, use_boundary_8=True, use_boundary_16=False)
 
@@ -123,14 +124,14 @@ CUDA_VISIBLE_DEVICES=0 python evaluation.py
 * Choose the evaluation model in run_latency:
 
 ```python
-# BiSeSTDC-50 234 FPS on NVIDIA GTX 1080Ti
+# DA-STDC-50 234 FPS on NVIDIA GTX 1080Ti
 backbone = 'BiSeSTDC'
 methodName = 'BiSeSTDC'
 inputSize = 512
 inputScale = 50
 inputDimension = (1, 3, 512, 1024)
 
-# BiSeSTDC-75 136FPS on NVIDIA GTX 1080Ti
+# DA-STDC-75 136FPS on NVIDIA GTX 1080Ti
 backbone = 'BiSeSTDC'
 methodName = 'BiSeSTDC'
 inputSize = 768
