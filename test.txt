@@ -1,0 +1,3 @@
+max mIOU model saved to: checkpoints/STDC1_seg/pths/model_maxmIOU50.pth
+max mIOU model saved to: checkpoints/STDC1_seg/pths/model_maxmIOU75.pth
+test

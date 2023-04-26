@@ -1,0 +1,7 @@
+INFO train.py(190): n_workers_train: 16
+INFO train.py(191): n_workers_val: 1
+INFO train.py(192): use_boundary_2: False
+INFO train.py(193): use_boundary_4: False
+INFO train.py(194): use_boundary_8: True
+INFO train.py(195): use_boundary_16: False
+INFO train.py(196): mode: train

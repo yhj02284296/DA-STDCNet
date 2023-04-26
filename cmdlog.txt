@@ -1,0 +1,5 @@
+ nvidia-smi
+ watch -n 10 nvidia-smi
+ sudo kill -9 PID
+fuser -v /dev/nvidia*  
+
